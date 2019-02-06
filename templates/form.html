@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block header_content %}
+{% endblock %}
+
+{% block title %}{{ page_title }}{% endblock %}
+{% block nav_home_active %}active{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row my-5">
+            <div class="col col-sm-4 offset-sm-4">
+                    <div class="card">
+                        <h5 class="card-header bg-primary text-white">{{ form_title }}</h5>
+                        <div class="card-body">
+                            <form action="" method="POST">
+                                {% csrf_token %}
+                                {% for field in form %}
+                                    {% if not filed.is_hidden %}
+                                        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                                    {% endif %}
+                                    {{ field }}
+                                    <p class="form-text text-danger">{{ field.errors.as_text }}</p>
+                                {% endfor %}
+                                <span id="tip" class="form-text text-danger mt-1" >{{ login_form.non_field_errors}}</span>
+                                <div class="float-left my-1">
+                                    {% block other_buttons %}{% endblock %}
+                                </div>
+                                <div class="float-right">
+                                    <input type="submit" value="{{ submit_text }}" class="btn btn-primary">
+                                    <button class="btn btn-light" onclick="window.location.href='{{ return_back_url }}'">返回</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

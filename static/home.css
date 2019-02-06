@@ -1,0 +1,18 @@
+.home-content{
+    font-size: 222%;
+    text-align: center;
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+div#container{
+    margin: 0 auto;
+    height: 20em;
+    width: 30em;
+    min-width: 30em;
+}
+
+div.hot-blogs{
+    text-align: center;
+    margin-top: 2em;
+}
